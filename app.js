@@ -181,8 +181,10 @@ app.get("/activities/:id/edit", function(req, res){
 app.post("/api/users/login", function(req, res){
     console.log(req.body);
     db.collection('users').findOne({ email: req.body.email, password:req.body.password},{password:0}, function(err, user){
-        if(err){
-            res.send({error:"404",err});
+        if(err || !user){
+            res.status(404).json({
+                message: "User not found"
+            });
         } else {
             console.log(user);
             res.status(200).json(user);
@@ -211,6 +213,10 @@ app.post("/api/users/", function(req, res){//for creating a user rest api post
         }, function(err, user){
             if(err){
                 console.log(err);
+                res.status(500).json({
+                    message: "User not created"
+                });
+
             } else {
                 console.log(user);
                 res.json(user);
