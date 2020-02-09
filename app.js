@@ -184,7 +184,8 @@ app.post("/api/users/login", function(req, res){
         if(err){
             res.send({error:"404",err});
         } else {
-            res.json(user);
+            console.log(user);
+            res.status(200).json(user);
         }
     })
 });
