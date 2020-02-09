@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(morgan('tiny'));
 app.use(cors());
 //app.use(history());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'docs')));
 //app.use('/', require('./routes/activity'))
 
 
@@ -235,7 +235,7 @@ app.get("/api/users/:email", function(req, res) {
 })
 
 app.get("*", function(req, res) {
-    res.sendFile(path.join(__dirname, 'public/index.html'));
+    res.sendFile(path.join(__dirname, 'docs/index.html'));
 })
 
 app.set('PORT', process.env.PORT || 3000);
