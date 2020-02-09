@@ -211,15 +211,15 @@ app.post("/api/users/", function(req, res){//for creating a user rest api post
             role:req.body.role,
             aboutMe:""
         }, function(err, user){
-            if(err){
+            if(err || !user){
                 console.log(err);
                 res.status(500).json({
                     message: "User not created"
                 });
 
             } else {
-                console.log(user);
-                res.json(user);
+                console.log('user', user);
+                res.status(200).json(user);
             }
         }
     );
