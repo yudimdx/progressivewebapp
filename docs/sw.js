@@ -38,9 +38,11 @@ async function networkAndCache(req) {
   const cache = await caches.open(cacheName);
   try {
     const fresh = await fetch(req);
+    console.log(fresh);
     await cache.put(req, fresh.clone());
     return fresh;
   } catch (e) {
+    console.log('error occurred with the request or caching', e);
     const cached = await cache.match(req);
     return cached;
   }
