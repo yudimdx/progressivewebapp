@@ -8,7 +8,7 @@ var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 
 const app     = express();
-const uri = "mongodb://localhost:27017";
+const uri = process.env.MONGODB || "mongodb://localhost:27017";
 const options = {useNewUrlParser: true, useUnifiedTopology: true};
 
 var db;
