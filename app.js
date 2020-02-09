@@ -218,8 +218,9 @@ app.post("/api/users/", function(req, res){//for creating a user rest api post
                 });
 
             } else {
-                console.log('user', user);
-                res.status(200).json(user);
+                res.status(200).json({
+                    message: "user registered"
+                });
             }
         }
     );
