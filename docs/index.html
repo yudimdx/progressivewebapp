@@ -297,7 +297,7 @@
             },
             removeActivity: function(index){
                 this.id = vm.activities[index]._id;
-                var URL = "/api/activities/"+this.id;
+                var URL = "https://yudimdxpwa.herokuapp.com/api/activities/"+this.id;
                 vm.showPMessage = true; //make textarea to show
                 vm.message = "Removing Activity: " + vm.activities[index].activity;   //what info to show depending on profile index
                 fetch(URL, {
@@ -315,7 +315,7 @@
             },
             fillForm: function(index){
                 this.id = vm.activities[index]._id;
-                fetch('/api/activities/'+this.id)
+                fetch('https://yudimdxpwa.herokuapp.com/api/activities/'+this.id)
                 .then(data => data.json()).then(response => {
                     var singleActivity = response;
                     vm.activity = singleActivity.activity;
@@ -344,7 +344,7 @@
                     price:this.price,
                     type:this.type
                 };
-                fetch('/api/activities/'+vm.id, {
+                fetch('https://yudimdxpwa.herokuapp.com/api/activities/'+vm.id, {
                     method: 'PUT',
                     body: JSON.stringify(act),
                     headers: {
@@ -358,7 +358,7 @@
                 })
             },
             updateActivities: function(){
-                fetch('/api/activities')
+                fetch('https://yudimdxpwa.herokuapp.com/api/activities')
                     .then(data => data.json()).then(response => {
                         console.log(response);
                         vm.activities = response
@@ -381,7 +381,7 @@
                         reviews:[]
                     }
                     vm.activities.push(newActivity);
-                    fetch('/api/activities/add', {
+                    fetch('https://yudimdxpwa.herokuapp.com/api/activities/add', {
                         method: 'POST',
                         body: JSON.stringify(newActivity),
                         headers: {
@@ -453,7 +453,7 @@
                 vm.activities[index].reviews.push({rate:vm.activities[index].rate, message:vm.activities[index].reviewComment, email: this.currentEmail});
 
                 //Update whole activity with reviews
-                fetch('/api/activities/'+vm.activities[index]._id+'/rate', {
+                fetch('https://yudimdxpwa.herokuapp.com/api/activities/'+vm.activities[index]._id+'/rate', {
                     method: 'PUT',
                     body: JSON.stringify({
                         rate:vm.activities[index].rate,
@@ -493,7 +493,7 @@
                 return this.currentRole;
             },
             updateBio: function(){
-                fetch('/api/users/', {
+                fetch('https://yudimdxpwa.herokuapp.com/api/users/', {
                     method: 'PUT',
                     body: JSON.stringify({aboutMe:this.currentAboutMe})
                 }).then(response => response.json()).then(() => {

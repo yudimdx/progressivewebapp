@@ -27,7 +27,7 @@ let usersComponent = Vue.component('form-login', {
     },
     methods: {
         checkLogin: function () {   //find the user with email and password in the array of users, if it finds it, it logged in
-            fetch('/api/users/login', {
+            fetch('https://yudimdxpwa.herokuapp.com/api/users/login', {
                 method: 'POST',
                 body: JSON.stringify({
                     email: this.currentEmail,
@@ -103,7 +103,7 @@ let addUser = Vue.component('form-register', {
     methods: {
         addUser: function () {      //addUser function, it will add a user if validemail and password different than empty
             if (this.validEmail(this.currentEmail) && this.currentPassword != '') {
-                fetch('/api/users/', {
+                fetch('https://yudimdxpwa.herokuapp.com/api/users/', {
                     method: 'POST',
                     body: JSON.stringify({
                         email: this.currentEmail,
@@ -172,7 +172,7 @@ let editUser = Vue.component('form-profile', {
             }
         },
         updateUser: function () {
-            fetch('/api/users/'+JSON.parse(localStorage.getItem('loggedInUser'))._id, {
+            fetch('https://yudimdxpwa.herokuapp.com/api/users/'+JSON.parse(localStorage.getItem('loggedInUser'))._id, {
                 method: 'PUT',
                 body: JSON.stringify({
                     aboutMe: this.bio
