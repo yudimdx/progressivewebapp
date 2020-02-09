@@ -6,7 +6,7 @@
   "background_color": "#fff",
   "description": "A simply activities schedule application.",
   "icons": [{
-    "src": "img/activities.png",
+    "src": "./img/activities.png",
     "sizes": "512x512",
     "type": "image/png"
   }
